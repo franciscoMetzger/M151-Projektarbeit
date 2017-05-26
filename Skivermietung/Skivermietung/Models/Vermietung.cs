@@ -23,7 +23,7 @@ namespace Skivermietung.Models
         public int ID_Vermietung { get; set; }
         public System.DateTime Von { get; set; }
         public System.DateTime Bis { get; set; }
-        public bool Bezahlt { get; set; }
+        public Nullable<System.DateTime> Bezahlt { get; set; }
         public Nullable<int> Rabatt { get; set; }
         public int KundeId { get; set; }
     

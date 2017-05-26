@@ -12,21 +12,22 @@ namespace Skivermietung.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
+    
     public partial class SkivermietungContext : DbContext
     {
         public SkivermietungContext()
             : base("name=SkivermietungContext")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<Artikel> Artikel { get; set; }
         public virtual DbSet<ArtikelVermietung> ArtikelVermietung { get; set; }
+        public virtual DbSet<Benutzer> Benutzer { get; set; }
         public virtual DbSet<Kategorie> Kategorie { get; set; }
         public virtual DbSet<Kunde> Kunde { get; set; }
         public virtual DbSet<Vermietung> Vermietung { get; set; }

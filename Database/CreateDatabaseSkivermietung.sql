@@ -27,7 +27,7 @@ CREATE TABLE Vermietung(
 	ID_Vermietung	INT PRIMARY KEY IDENTITY(1,1),
 	Von				DATETIME NOT NULL,
 	Bis				DATETIME NOT NULL,
-	Bezahlt			BIT NOT NULL DEFAULT(0),
+	Bezahlt			DATETIME,
 	Rabatt			INT,
 	KundeId			INT FOREIGN KEY REFERENCES Kunde(ID_Kunde) NOT NULL
 );
@@ -37,6 +37,15 @@ CREATE TABLE ArtikelVermietung(
 	ID_ArtikelVermietung INT PRIMARY KEY IDENTITY(1,1),
 	ArtikelId			 INT FOREIGN KEY REFERENCES Artikel(ID_Artikel) NOT NULL,
 	VermietungsId		 INT FOREIGN KEY REFERENCES Vermietung(ID_Vermietung) NOT NULL,
+);
+
+CREATE TABLE Benutzer(
+	ID_Bennutzer	INT PRIMARY KEY IDENTITY(1,1),
+	Benutzername	VARCHAR(50)  NOT NULL,
+	IsAdmin			BIT DEFAULT(0) NOT NULL,
+	PasswordHash	VARCHAR(29)  NOT NULL,
+	PasswordSalt	VARCHAR(60)  NOT NULL,
+
 );
 
 INSERT INTO Kategorie VALUES('Ski');
