@@ -1,4 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using FakeItEasy;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skivermietung.Business.Domain;
 using Skivermietung.Business.Security;
 
 namespace Skivermietung.Test
@@ -6,20 +9,27 @@ namespace Skivermietung.Test
 	[TestClass]
 	public class AuthenticationServiceTest
 	{
+		private IUnitOfWork _unitOfWork;
 		private AuthenticationService _testee;
+
+		private const string Username = "Legend47";
 
 		[TestInitialize]
 		public void TestInitialize()
 		{
-			_testee = new AuthenticationService();
+			_unitOfWork = A.Fake<IUnitOfWork>();
+
+			_testee = new AuthenticationService(_unitOfWork);
 		}
 
 		[TestMethod]
-		public void SavePassword()
+		public void Verify_WhenUserNotExists_ThenReturnFalse()
 		{
+			A.CallTo(() => _unitOfWork.Benutzer.LoadByUsername(Username)).Returns(null);
 
-			_testee.SavePassword("User", "passL");
+			var result = _testee.VerifyCredentials(Username, "pass");
 
+			result.Should().BeFalse();
 		}
 	}
 }

@@ -41,7 +41,7 @@ CREATE TABLE ArtikelVermietung(
 
 CREATE TABLE Benutzer(
 	ID_Bennutzer	INT PRIMARY KEY IDENTITY(1,1),
-	Benutzername	VARCHAR(50)  NOT NULL,
+	Benutzername	VARCHAR(50)  NOT NULL UNIQUE,
 	IsAdmin			BIT DEFAULT(0) NOT NULL,
 	PasswordHash	VARCHAR(29)  NOT NULL,
 	PasswordSalt	VARCHAR(60)  NOT NULL,
