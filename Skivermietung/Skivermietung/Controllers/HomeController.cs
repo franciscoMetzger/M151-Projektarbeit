@@ -1,30 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Skivermietung.Controllers
 {
-    public class HomeController : Controller
-    {
-        public ActionResult Index()
-        {
-            return View();
-        }
+	public class HomeController : Controller
+	{
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Ski- und Snowboardvermietung";
+		public ActionResult Index()
+		{
+			return View();
+		}
 
-            return View();
-        }
+		public ActionResult About()
+		{
+			ViewBag.Message = "Ski- und Snowboardvermietung";
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Kontakt";
+			return View();
+		}
 
-            return View();
-        }
-    }
+		public ActionResult Contact()
+		{
+			ViewBag.Message = "Kontakt";
+
+			return View();
+		}
+	}
 }
