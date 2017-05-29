@@ -63,7 +63,8 @@ namespace Skivermietung.Business.Security
 				return false;
 			}
 
-			return Crypt.Verify(password, user.PasswordSalt);
+			var generatedHash = Crypt.HashPassword(password, user.PasswordSalt);
+			return generatedHash.Equals(user.PasswordHash);
 		}
 	}
 }
