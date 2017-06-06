@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SkivermietungModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SkivermietungModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Artikel">
           <Key>
             <PropertyRef Name="ID_Artikel" />
@@ -58,11 +58,11 @@
           <Property Name="ID_Vermietung" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Von" Type="datetime" Nullable="false" />
           <Property Name="Bis" Type="datetime" Nullable="false" />
-          <Property Name="Bezahlt" Type="datetime" />
+          <Property Name="Bezahlt" Type="bit" Nullable="false" />
           <Property Name="Rabatt" Type="int" />
           <Property Name="KundeId" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Artikel__Kategor__1273C1CD">
+        <Association Name="FK__Artikel__Kategor__1367E606">
           <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="1" />
           <End Role="Artikel" Type="Self.Artikel" Multiplicity="*" />
           <ReferentialConstraint>
@@ -74,7 +74,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ArtikelVe__Artik__1A14E395">
+        <Association Name="FK__ArtikelVe__Artik__1BFD2C07">
           <End Role="Artikel" Type="Self.Artikel" Multiplicity="1" />
           <End Role="ArtikelVermietung" Type="Self.ArtikelVermietung" Multiplicity="*" />
           <ReferentialConstraint>
@@ -86,7 +86,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ArtikelVe__Vermi__1B0907CE">
+        <Association Name="FK__ArtikelVe__Vermi__1CF15040">
           <End Role="Vermietung" Type="Self.Vermietung" Multiplicity="1" />
           <End Role="ArtikelVermietung" Type="Self.ArtikelVermietung" Multiplicity="*" />
           <ReferentialConstraint>
@@ -98,7 +98,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vermietun__Kunde__173876EA">
+        <Association Name="FK__Vermietun__Kunde__1920BF5C">
           <End Role="Kunde" Type="Self.Kunde" Multiplicity="1" />
           <End Role="Vermietung" Type="Self.Vermietung" Multiplicity="*" />
           <ReferentialConstraint>
@@ -117,25 +117,24 @@
           <EntitySet Name="Kategorie" EntityType="Self.Kategorie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kunde" EntityType="Self.Kunde" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vermietung" EntityType="Self.Vermietung" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Artikel__Kategor__1273C1CD" Association="Self.FK__Artikel__Kategor__1273C1CD">
+          <AssociationSet Name="FK__Artikel__Kategor__1367E606" Association="Self.FK__Artikel__Kategor__1367E606">
             <End Role="Kategorie" EntitySet="Kategorie" />
             <End Role="Artikel" EntitySet="Artikel" />
           </AssociationSet>
-          <AssociationSet Name="FK__ArtikelVe__Artik__1A14E395" Association="Self.FK__ArtikelVe__Artik__1A14E395">
+          <AssociationSet Name="FK__ArtikelVe__Artik__1BFD2C07" Association="Self.FK__ArtikelVe__Artik__1BFD2C07">
             <End Role="Artikel" EntitySet="Artikel" />
             <End Role="ArtikelVermietung" EntitySet="ArtikelVermietung" />
           </AssociationSet>
-          <AssociationSet Name="FK__ArtikelVe__Vermi__1B0907CE" Association="Self.FK__ArtikelVe__Vermi__1B0907CE">
+          <AssociationSet Name="FK__ArtikelVe__Vermi__1CF15040" Association="Self.FK__ArtikelVe__Vermi__1CF15040">
             <End Role="Vermietung" EntitySet="Vermietung" />
             <End Role="ArtikelVermietung" EntitySet="ArtikelVermietung" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vermietun__Kunde__173876EA" Association="Self.FK__Vermietun__Kunde__173876EA">
+          <AssociationSet Name="FK__Vermietun__Kunde__1920BF5C" Association="Self.FK__Vermietun__Kunde__1920BF5C">
             <End Role="Kunde" EntitySet="Kunde" />
             <End Role="Vermietung" EntitySet="Vermietung" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SkivermietungModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -149,8 +148,8 @@
           <Property Name="Marke" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="PreisProTag" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="KategorieId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Kategorie" Relationship="Self.FK__Artikel__Kategor__1273C1CD" FromRole="Artikel" ToRole="Kategorie" />
-          <NavigationProperty Name="ArtikelVermietung" Relationship="Self.FK__ArtikelVe__Artik__1A14E395" FromRole="Artikel" ToRole="ArtikelVermietung" />
+          <NavigationProperty Name="Kategorie" Relationship="Self.FK__Artikel__Kategor__1367E606" FromRole="Artikel" ToRole="Kategorie" />
+          <NavigationProperty Name="ArtikelVermietung" Relationship="Self.FK__ArtikelVe__Artik__1BFD2C07" FromRole="Artikel" ToRole="ArtikelVermietung" />
         </EntityType>
         <EntityType Name="ArtikelVermietung">
           <Key>
@@ -159,18 +158,8 @@
           <Property Name="ID_ArtikelVermietung" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ArtikelId" Type="Int32" Nullable="false" />
           <Property Name="VermietungsId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Artikel" Relationship="Self.FK__ArtikelVe__Artik__1A14E395" FromRole="ArtikelVermietung" ToRole="Artikel" />
-          <NavigationProperty Name="Vermietung" Relationship="Self.FK__ArtikelVe__Vermi__1B0907CE" FromRole="ArtikelVermietung" ToRole="Vermietung" />
-        </EntityType>
-        <EntityType Name="Benutzer">
-          <Key>
-            <PropertyRef Name="ID_Bennutzer" />
-          </Key>
-          <Property Name="ID_Bennutzer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Benutzername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
-          <Property Name="PasswordHash" Type="String" MaxLength="29" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PasswordSalt" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Artikel" Relationship="Self.FK__ArtikelVe__Artik__1BFD2C07" FromRole="ArtikelVermietung" ToRole="Artikel" />
+          <NavigationProperty Name="Vermietung" Relationship="Self.FK__ArtikelVe__Vermi__1CF15040" FromRole="ArtikelVermietung" ToRole="Vermietung" />
         </EntityType>
         <EntityType Name="Kategorie">
           <Key>
@@ -178,7 +167,7 @@
           </Key>
           <Property Name="ID_Kategorie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Bezeichnung" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Artikel" Relationship="Self.FK__Artikel__Kategor__1273C1CD" FromRole="Kategorie" ToRole="Artikel" />
+          <NavigationProperty Name="Artikel" Relationship="Self.FK__Artikel__Kategor__1367E606" FromRole="Kategorie" ToRole="Artikel" />
         </EntityType>
         <EntityType Name="Kunde">
           <Key>
@@ -189,7 +178,7 @@
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TelefonNr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Geburtstag" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Vermietung" Relationship="Self.FK__Vermietun__Kunde__173876EA" FromRole="Kunde" ToRole="Vermietung" />
+          <NavigationProperty Name="Vermietung" Relationship="Self.FK__Vermietun__Kunde__1920BF5C" FromRole="Kunde" ToRole="Vermietung" />
         </EntityType>
         <EntityType Name="Vermietung">
           <Key>
@@ -198,13 +187,13 @@
           <Property Name="ID_Vermietung" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Von" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Bis" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Bezahlt" Type="DateTime" Precision="3" />
+          <Property Name="Bezahlt" Type="Boolean" Nullable="false" />
           <Property Name="Rabatt" Type="Int32" />
           <Property Name="KundeId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ArtikelVermietung" Relationship="Self.FK__ArtikelVe__Vermi__1B0907CE" FromRole="Vermietung" ToRole="ArtikelVermietung" />
-          <NavigationProperty Name="Kunde" Relationship="Self.FK__Vermietun__Kunde__173876EA" FromRole="Vermietung" ToRole="Kunde" />
+          <NavigationProperty Name="ArtikelVermietung" Relationship="Self.FK__ArtikelVe__Vermi__1CF15040" FromRole="Vermietung" ToRole="ArtikelVermietung" />
+          <NavigationProperty Name="Kunde" Relationship="Self.FK__Vermietun__Kunde__1920BF5C" FromRole="Vermietung" ToRole="Kunde" />
         </EntityType>
-        <Association Name="FK__Artikel__Kategor__1273C1CD">
+        <Association Name="FK__Artikel__Kategor__1367E606">
           <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="1" />
           <End Role="Artikel" Type="Self.Artikel" Multiplicity="*" />
           <ReferentialConstraint>
@@ -216,7 +205,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ArtikelVe__Artik__1A14E395">
+        <Association Name="FK__ArtikelVe__Artik__1BFD2C07">
           <End Role="Artikel" Type="Self.Artikel" Multiplicity="1" />
           <End Role="ArtikelVermietung" Type="Self.ArtikelVermietung" Multiplicity="*" />
           <ReferentialConstraint>
@@ -228,7 +217,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ArtikelVe__Vermi__1B0907CE">
+        <Association Name="FK__ArtikelVe__Vermi__1CF15040">
           <End Role="Vermietung" Type="Self.Vermietung" Multiplicity="1" />
           <End Role="ArtikelVermietung" Type="Self.ArtikelVermietung" Multiplicity="*" />
           <ReferentialConstraint>
@@ -240,7 +229,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vermietun__Kunde__173876EA">
+        <Association Name="FK__Vermietun__Kunde__1920BF5C">
           <End Role="Kunde" Type="Self.Kunde" Multiplicity="1" />
           <End Role="Vermietung" Type="Self.Vermietung" Multiplicity="*" />
           <ReferentialConstraint>
@@ -255,27 +244,37 @@
         <EntityContainer Name="SkivermietungContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Artikel" EntityType="Self.Artikel" />
           <EntitySet Name="ArtikelVermietung" EntityType="Self.ArtikelVermietung" />
-          <EntitySet Name="Benutzer" EntityType="Self.Benutzer" />
           <EntitySet Name="Kategorie" EntityType="Self.Kategorie" />
           <EntitySet Name="Kunde" EntityType="Self.Kunde" />
           <EntitySet Name="Vermietung" EntityType="Self.Vermietung" />
-          <AssociationSet Name="FK__Artikel__Kategor__1273C1CD" Association="Self.FK__Artikel__Kategor__1273C1CD">
+          <AssociationSet Name="FK__Artikel__Kategor__1367E606" Association="Self.FK__Artikel__Kategor__1367E606">
             <End Role="Kategorie" EntitySet="Kategorie" />
             <End Role="Artikel" EntitySet="Artikel" />
           </AssociationSet>
-          <AssociationSet Name="FK__ArtikelVe__Artik__1A14E395" Association="Self.FK__ArtikelVe__Artik__1A14E395">
+          <AssociationSet Name="FK__ArtikelVe__Artik__1BFD2C07" Association="Self.FK__ArtikelVe__Artik__1BFD2C07">
             <End Role="Artikel" EntitySet="Artikel" />
             <End Role="ArtikelVermietung" EntitySet="ArtikelVermietung" />
           </AssociationSet>
-          <AssociationSet Name="FK__ArtikelVe__Vermi__1B0907CE" Association="Self.FK__ArtikelVe__Vermi__1B0907CE">
+          <AssociationSet Name="FK__ArtikelVe__Vermi__1CF15040" Association="Self.FK__ArtikelVe__Vermi__1CF15040">
             <End Role="Vermietung" EntitySet="Vermietung" />
             <End Role="ArtikelVermietung" EntitySet="ArtikelVermietung" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vermietun__Kunde__173876EA" Association="Self.FK__Vermietun__Kunde__173876EA">
+          <AssociationSet Name="FK__Vermietun__Kunde__1920BF5C" Association="Self.FK__Vermietun__Kunde__1920BF5C">
             <End Role="Kunde" EntitySet="Kunde" />
             <End Role="Vermietung" EntitySet="Vermietung" />
           </AssociationSet>
+          <EntitySet Name="Benutzer" EntityType="SkivermietungModel.Benutzer" />
         </EntityContainer>
+        <EntityType Name="Benutzer">
+          <Key>
+            <PropertyRef Name="ID_Bennutzer" />
+          </Key>
+          <Property Name="ID_Bennutzer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Benutzername" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" Nullable="false" MaxLength="29" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -300,17 +299,6 @@
                 <ScalarProperty Name="ID_ArtikelVermietung" ColumnName="ID_ArtikelVermietung" />
                 <ScalarProperty Name="ArtikelId" ColumnName="ArtikelId" />
                 <ScalarProperty Name="VermietungsId" ColumnName="VermietungsId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Benutzer">
-            <EntityTypeMapping TypeName="SkivermietungModel.Benutzer">
-              <MappingFragment StoreEntitySet="Benutzer">
-                <ScalarProperty Name="ID_Bennutzer" ColumnName="ID_Bennutzer" />
-                <ScalarProperty Name="Benutzername" ColumnName="Benutzername" />
-                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -342,6 +330,17 @@
                 <ScalarProperty Name="Bezahlt" ColumnName="Bezahlt" />
                 <ScalarProperty Name="Rabatt" ColumnName="Rabatt" />
                 <ScalarProperty Name="KundeId" ColumnName="KundeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Benutzer">
+            <EntityTypeMapping TypeName="SkivermietungModel.Benutzer">
+              <MappingFragment StoreEntitySet="Benutzer">
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="Benutzername" ColumnName="Benutzername" />
+                <ScalarProperty Name="ID_Bennutzer" ColumnName="ID_Bennutzer" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
