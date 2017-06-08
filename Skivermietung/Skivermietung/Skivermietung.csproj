@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5891FC6A-C758-4EED-BD84-2201D46D38F1}</ProjectGuid>
+    <ProjectGuid>{E598C5C5-120A-421A-8899-721381FB8DCA}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -44,8 +44,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.6.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.6.0\lib\net45\Autofac.dll</HintPath>
+    <Reference Include="Autofac, Version=4.0.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.0.1\lib\net45\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
@@ -215,9 +215,6 @@
     <Compile Include="Business\Domain\Repositories\Interfaces\IRepositoryBase.cs" />
     <Compile Include="Business\Domain\Repositories\RepositoryBase.cs" />
     <Compile Include="Business\Domain\UnitOfWork.cs" />
-    <Compile Include="Business\Modules\SkivermietungModule.cs" />
-    <Compile Include="Business\Security\AuthenticationService.cs" />
-    <Compile Include="Business\Security\IAuthenticationService.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -260,7 +257,10 @@
     <Compile Include="Models\Vermietung.cs">
       <DependentUpon>SkivermietungModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Business\Modules\SkivermietungModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Business\Security\AuthenticationService.cs" />
+    <Compile Include="Business\Security\IAuthenticationService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -271,16 +271,6 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="LICENSE.txt" />
-    <Content Include="Models\SkivermietungModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SkivermietungModel.edmx</DependentUpon>
-      <LastGenOutput>SkivermietungModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\SkivermietungModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SkivermietungModel.edmx</DependentUpon>
-      <LastGenOutput>SkivermietungModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -290,8 +280,18 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SkivermietungModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Models\SkivermietungModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SkivermietungModel.edmx</DependentUpon>
+      <LastGenOutput>SkivermietungModel.Context.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\SkivermietungModel.edmx.diagram">
       <DependentUpon>SkivermietungModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\SkivermietungModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SkivermietungModel.edmx</DependentUpon>
+      <LastGenOutput>SkivermietungModel.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -370,9 +370,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>4613</DevelopmentServerPort>
+          <DevelopmentServerPort>2576</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:4613/</IISUrl>
+          <IISUrl>http://localhost:2576/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
