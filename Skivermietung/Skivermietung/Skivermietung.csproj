@@ -151,6 +151,7 @@
     <Compile Include="Business\Security\IAuthenticationService.cs" />
     <Compile Include="Controllers\ArtikelController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KategorieController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -262,6 +263,11 @@
     <Content Include="Views\Artikel\Details.cshtml" />
     <Content Include="Views\Artikel\Edit.cshtml" />
     <Content Include="Views\Artikel\Delete.cshtml" />
+    <Content Include="Views\Kategorie\Create.cshtml" />
+    <Content Include="Views\Kategorie\Delete.cshtml" />
+    <Content Include="Views\Kategorie\Details.cshtml" />
+    <Content Include="Views\Kategorie\Edit.cshtml" />
+    <Content Include="Views\Kategorie\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
