@@ -163,6 +163,7 @@
     <Compile Include="Models\Benutzer.cs">
       <DependentUpon>SkievermietungModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DecimalModelBinder.cs" />
     <Compile Include="Models\Kategorie.cs">
       <DependentUpon>SkievermietungModel.tt</DependentUpon>
     </Compile>
@@ -258,6 +259,9 @@
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Artikel\Index.cshtml" />
     <Content Include="Views\Artikel\Create.cshtml" />
+    <Content Include="Views\Artikel\Details.cshtml" />
+    <Content Include="Views\Artikel\Edit.cshtml" />
+    <Content Include="Views\Artikel\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

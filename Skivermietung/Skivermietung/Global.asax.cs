@@ -8,6 +8,7 @@ using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Skivermietung.Business.Modules;
+using Skivermietung.Models;
 
 namespace Skivermietung
 {
@@ -19,6 +20,9 @@ namespace Skivermietung
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+			ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
+
 			InitializeAutofac();
 		}
 
