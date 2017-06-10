@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("2293a162-c04c-4a37-b835-77d46e816054")]
+[assembly: Guid("ce6d6416-c2e5-4bb0-ade6-28587ae38bcf")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -33,5 +33,4 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-
 [assembly: InternalsVisibleTo("Skivermietung.Test")]
