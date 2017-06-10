@@ -1,4 +1,3 @@
-using Skivermietung.Business.Domain.Repositories;
 using Skivermietung.Business.Domain.Repositories.Interfaces;
 using Skivermietung.Models;
 
@@ -8,16 +7,22 @@ namespace Skivermietung.Business.Domain
 	{
 		private readonly SkivermietungContext _context;
 
-		public UnitOfWork(SkivermietungContext context)
+		public UnitOfWork(SkivermietungContext context,
+			IArtikelRepository artikel,
+			IVermietungRepository vermietung,
+			IArtikelVermietungRepository artikelVermietung,
+			IKategorieRepository kategorie,
+			IKundeRepository kunde,
+			IBenutzerRepository benutzer)
 		{
 			_context = context;
 
-			Artikel = new ArtikelRepository(_context);
-			Vermietung = new VermietungRepository(_context);
-			ArtikelVermietung = new ArtikelVermietungRepository(_context);
-			Kategorie = new KategorieRepository(_context);
-			Kunde = new KundeRepository(_context);
-			Benutzer = new BenutzerRepository(_context);
+			Artikel = artikel;
+			Vermietung = vermietung;
+			ArtikelVermietung = artikelVermietung;
+			Kategorie = kategorie;
+			Kunde = kunde;
+			Benutzer = benutzer;
 		}
 
 		public IArtikelRepository Artikel { get; private set; }
