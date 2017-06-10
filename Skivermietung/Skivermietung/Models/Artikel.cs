@@ -7,26 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace Skivermietung.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Artikel
-    {
-        public Artikel()
-        {
-            this.ArtikelVermietung = new HashSet<ArtikelVermietung>();
-        }
-    
-        public int ID_Artikel { get; set; }
-        public string Bezeichnung { get; set; }
-        public string Farbe { get; set; }
-        public string Marke { get; set; }
-        public decimal PreisProTag { get; set; }
-        public int KategorieId { get; set; }
-    
-        public virtual Kategorie Kategorie { get; set; }
-        public virtual ICollection<ArtikelVermietung> ArtikelVermietung { get; set; }
-    }
+	using System;
+	using System.Collections.Generic;
+
+	public partial class Artikel
+	{
+		public Artikel()
+		{
+			this.ArtikelVermietung = new HashSet<ArtikelVermietung>();
+		}
+
+		public int ID_Artikel { get; set; }
+		public string Bezeichnung { get; set; }
+		public string Farbe { get; set; }
+		public string Marke { get; set; }
+		public decimal PreisProTag { get; set; }
+		public int KategorieId { get; set; }
+
+		public virtual Kategorie Kategorie { get; set; }
+		public virtual ICollection<ArtikelVermietung> ArtikelVermietung { get; set; }
+	}
 }

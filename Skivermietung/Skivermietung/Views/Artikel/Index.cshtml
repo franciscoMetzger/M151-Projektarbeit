@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Skivermietung.Models.Artikel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Bezeichnung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Farbe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Marke)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreisProTag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kategorie.Bezeichnung)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bezeichnung)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Farbe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Marke)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreisProTag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kategorie.Bezeichnung)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Artikel }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Artikel }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Artikel })
+        </td>
+    </tr>
+}
+
+</table>
