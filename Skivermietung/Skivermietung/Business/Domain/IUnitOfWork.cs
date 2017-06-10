@@ -1,8 +1,9 @@
-﻿using Skivermietung.Business.Domain.Repositories.Interfaces;
+﻿using System;
+using Skivermietung.Business.Domain.Repositories.Interfaces;
 
 namespace Skivermietung.Business.Domain
 {
-	public interface IUnitOfWork
+	public interface IUnitOfWork : IDisposable
 	{
 		IArtikelRepository Artikel { get; }
 		IVermietungRepository Vermietung { get; }
