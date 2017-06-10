@@ -1,0 +1,58 @@
+﻿@model Skivermietung.Models.Vermietung
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Vermietung</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Von)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Von)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bezahlt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bezahlt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rabatt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rabatt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kunde.Vorname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kunde.Vorname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Vermietung }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
