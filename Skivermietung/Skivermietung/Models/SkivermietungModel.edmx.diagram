@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dd7b9305826c47b0b0a7861bd3c41041" Name="Diagram1">
+      <Diagram DiagramId="60e6d591921f4734a76185cad98bd568" Name="Diagram1">
         <EntityTypeShape EntityType="SkivermietungModel.Artikel" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="SkivermietungModel.ArtikelVermietung" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SkivermietungModel.Benutzer" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SkivermietungModel.Kategorie" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SkivermietungModel.Kunde" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SkivermietungModel.Vermietung" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="SkivermietungModel.FK__Artikel__Kategor__1367E606" ManuallyRouted="false" />
-        <AssociationConnector Association="SkivermietungModel.FK__ArtikelVe__Artik__1BFD2C07" ManuallyRouted="false" />
-        <AssociationConnector Association="SkivermietungModel.FK__ArtikelVe__Vermi__1CF15040" ManuallyRouted="false" />
-        <AssociationConnector Association="SkivermietungModel.FK__Vermietun__Kunde__1920BF5C" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="SkivermietungModel.Benutzer" Width="1.5" PointX="5.375" PointY="4.75" />
+        <AssociationConnector Association="SkivermietungModel.FK__Artikel__Kategor__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="SkivermietungModel.FK__ArtikelVe__Artik__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="SkivermietungModel.FK__ArtikelVe__Vermi__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="SkivermietungModel.FK__Vermietun__Kunde__173876EA" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

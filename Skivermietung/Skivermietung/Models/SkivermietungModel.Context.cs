@@ -27,9 +27,9 @@ namespace Skivermietung.Models
     
         public virtual DbSet<Artikel> Artikel { get; set; }
         public virtual DbSet<ArtikelVermietung> ArtikelVermietung { get; set; }
+        public virtual DbSet<Benutzer> Benutzer { get; set; }
         public virtual DbSet<Kategorie> Kategorie { get; set; }
         public virtual DbSet<Kunde> Kunde { get; set; }
         public virtual DbSet<Vermietung> Vermietung { get; set; }
-        public virtual DbSet<Benutzer> Benutzer { get; set; }
     }
 }
