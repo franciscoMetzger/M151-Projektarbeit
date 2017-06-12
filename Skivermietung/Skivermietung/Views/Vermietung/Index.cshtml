@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Skivermietung.Models.Vermietung>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Vermietungen";
 }
 
-<h2>Index</h2>
+<h2>Vermietungen</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Neue Vermietung erfassen", "Create")
 </p>
 <table class="table">
     <tr>
@@ -24,7 +24,7 @@
             @Html.DisplayNameFor(model => model.Rabatt)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Kunde.Vorname)
+            <label>Kunde</label>
         </th>
         <th></th>
     </tr>
@@ -44,12 +44,12 @@
             @Html.DisplayFor(modelItem => item.Rabatt)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Kunde.Vorname)
+            @Html.DisplayFor(modelItem => string.Format("{0} {1}", item.Kunde.Vorname, item.Kunde.Name))
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Vermietung }) |
+            @Html.ActionLink("Anpassen", "Edit", new { id=item.ID_Vermietung }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID_Vermietung }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Vermietung })
+            @Html.ActionLink("Löschen", "Delete", new { id=item.ID_Vermietung })
         </td>
     </tr>
 }

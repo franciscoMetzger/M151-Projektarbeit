@@ -20,6 +20,7 @@ namespace Skivermietung.Models.Metadata
 		public int? Rabatt { get; set; }
 
 		[Required]
+		[Display(Name = "Kunde")]
 		public int KundeId { get; set; }
 	}
 }

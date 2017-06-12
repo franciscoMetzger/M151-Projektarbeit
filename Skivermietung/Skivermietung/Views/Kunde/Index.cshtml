@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Skivermietung.Models.Kunde>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Kundenverwaltung";
 }
 
-<h2>Index</h2>
+<h2>Kunden</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Neuen Kunden erfassen", "Create")
 </p>
 <table class="table">
     <tr>
@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.Geburtstag)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Kunde }) |
+            @Html.ActionLink("Anpassen", "Edit", new { id=item.ID_Kunde }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID_Kunde }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Kunde })
+            @Html.ActionLink("Löschen", "Delete", new { id=item.ID_Kunde })
         </td>
     </tr>
 }

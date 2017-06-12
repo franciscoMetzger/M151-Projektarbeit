@@ -6,7 +6,7 @@ namespace Skivermietung.Models.Metadata
 	public class ArtikelMetadata
 	{
 		[StringLength(200)]
-		[MinLength(5)]
+		[MinLength(2)]
 		[Required]
 		public string Bezeichnung { get; set; }
 
@@ -22,6 +22,7 @@ namespace Skivermietung.Models.Metadata
 		public decimal PreisProTag { get; set; }
 
 		[Required]
+		[Display(Name = "Kategorie")]
 		public int KategorieId { get; set; }
 	}
 }

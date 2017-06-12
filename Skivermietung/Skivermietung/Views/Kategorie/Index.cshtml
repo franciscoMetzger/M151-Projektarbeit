@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Skivermietung.Models.Kategorie>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Kategorien";
 }
 
-<h2>Index</h2>
+<h2>Kategorien</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Neue Kategorie erfassen", "Create")
 </p>
 <table class="table">
     <tr>
@@ -23,9 +23,9 @@
             @Html.DisplayFor(modelItem => item.Bezeichnung)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Kategorie }) |
+            @Html.ActionLink("Anpassen", "Edit", new { id=item.ID_Kategorie }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID_Kategorie }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Kategorie })
+            @Html.ActionLink("Löschen", "Delete", new { id=item.ID_Kategorie })
         </td>
     </tr>
 }
