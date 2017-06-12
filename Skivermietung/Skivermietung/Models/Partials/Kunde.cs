@@ -8,5 +8,6 @@ namespace Skivermietung.Models
 	public partial class Kunde
 	{
 
+
 	}
 }

@@ -88,7 +88,7 @@ namespace Skivermietung.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				_unitOfWork.Kunde.Delete(kunde);
+				_unitOfWork.Kunde.Update(kunde);
 				_unitOfWork.SaveChanges();
 				return RedirectToAction("Index");
 			}

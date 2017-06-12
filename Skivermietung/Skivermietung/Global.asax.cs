@@ -22,6 +22,7 @@ namespace Skivermietung
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 
 			ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
+			ModelBinders.Binders.Add(typeof(DateTime), new DateTimeBinder());
 
 			InitializeAutofac();
 		}
