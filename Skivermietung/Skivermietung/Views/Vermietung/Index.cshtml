@@ -44,7 +44,7 @@
             @Html.DisplayFor(modelItem => item.Rabatt)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => string.Format("{0} {1}", item.Kunde.Vorname, item.Kunde.Name))
+            @Html.DisplayFor(modelItem => item.Kunde.NameKomplett))
         </td>
         <td>
             @Html.ActionLink("Anpassen", "Edit", new { id=item.ID_Vermietung }) |

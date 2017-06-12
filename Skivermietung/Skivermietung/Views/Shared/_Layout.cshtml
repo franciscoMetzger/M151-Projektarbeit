@@ -21,5 +21,18 @@
 	@Scripts.Render("~/bundles/bootstrap")
 	@RenderSection("scripts", required: false)
 
+	<script src="../../Scripts/globalize.js"></script>
+	<script src="../../Scripts/jquery.validate.min.js"></script>
+	@*<script src="../../Scripts/globalize.culture.de-CH.js"></script>*@
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$.validator.methods.date = function (value, element) {
+				Globalize.culture("de-CH");
+				return this.optional(element) || Globalize.parseDate(value) !== null;
+			}
+		});
+	</script>
+
 </body>
 </html>
