@@ -1,4 +1,5 @@
-﻿@model Skivermietung.Models.Artikel
+﻿@using Skivermietung.Models
+@model Skivermietung.Models.Artikel
 
 @{
     ViewBag.Title = "Details";
@@ -46,9 +47,10 @@
             @Html.DisplayNameFor(model => model.Kategorie.Bezeichnung)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Kategorie.Bezeichnung)
-        </dd>
+	    <dd>
+		    @Html.DisplayFor(model => model.Kategorie.Bezeichnung)
+	    </dd>
+
 
     </dl>
 </div>

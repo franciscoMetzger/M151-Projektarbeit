@@ -1,58 +1,72 @@
-﻿@model Skivermietung.Models.Vermietung
+﻿@using Skivermietung.Models
+@model Skivermietung.Models.Vermietung
 
 @{
-    ViewBag.Title = "Details";
+	ViewBag.Title = "Details";
 }
 
 <h2>Details</h2>
 
 <div>
-    <h4>Vermietung</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Von)
-        </dt>
+	<h4>Vermietung</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.Von)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Von)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Von)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Bis)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Bis)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Bis)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Bis)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Bezahlt)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Bezahlt)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Bezahlt)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Bezahlt)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Rabatt)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Rabatt)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Rabatt)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Rabatt)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Kunde.Vorname)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Kunde.Vorname)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Kunde.Vorname)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Kunde.Vorname)
+		</dd>
 
-    </dl>
+		<dt>
+			<label>Artikel</label>
+		</dt>
+		<dd>
+			<ul>
+				@foreach (Artikel artikel in ViewBag.VermietungArtikel)
+				{
+					<li>
+						@(artikel.Bezeichnung)
+					</li>
+				}
+			</ul>
+		</dd>
+	</dl>
 </div>
 <p>
-    @Html.ActionLink("Anpassen", "Edit", new { id = Model.ID_Vermietung }) |
-    @Html.ActionLink("Zurück", "Index")
+	@Html.ActionLink("Anpassen", "Edit", new { id = Model.ID_Vermietung }) |
+	@Html.ActionLink("Zurück", "Index")
 </p>

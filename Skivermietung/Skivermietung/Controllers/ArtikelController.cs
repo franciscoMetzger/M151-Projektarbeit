@@ -42,6 +42,7 @@ namespace Skivermietung.Controllers
 			{
 				return HttpNotFound();
 			}
+
 			return View(artikel);
 		}
 

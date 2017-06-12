@@ -43,6 +43,9 @@ namespace Skivermietung.Controllers
 			{
 				return HttpNotFound();
 			}
+
+			ViewBag.VermietungArtikel = vermietung.ArtikelVermietung.Select(x => x.Artikel);
+
 			return View(vermietung);
 		}
 
@@ -50,6 +53,7 @@ namespace Skivermietung.Controllers
 		public ActionResult Create()
 		{
 			ViewBag.KundeId = new SelectList(_kundenSelection, "ID_Kunde", "Vorname");
+			ViewBag.Artikel = _unitOfWork.Artikel.LoadAll().ToList();
 			return View();
 		}
 
@@ -62,6 +66,11 @@ namespace Skivermietung.Controllers
 		{
 			if (ModelState.IsValid)
 			{
+				foreach (var artikelId in vermietung.Artikel)
+				{
+					vermietung.ArtikelVermietung.Add(new ArtikelVermietung { ArtikelId = artikelId, VermietungsId = vermietung.ID_Vermietung });
+				}
+
 				_unitOfWork.Vermietung.Insert(vermietung);
 				_unitOfWork.SaveChanges();
 				return RedirectToAction("Index");
@@ -84,6 +93,7 @@ namespace Skivermietung.Controllers
 				return HttpNotFound();
 			}
 			ViewBag.KundeId = new SelectList(_kundenSelection, "ID_Kunde", "Vorname", vermietung.KundeId);
+			ViewBag.Artikel = _unitOfWork.Artikel.LoadAll().ToList();
 			return View(vermietung);
 		}
 
@@ -91,11 +101,26 @@ namespace Skivermietung.Controllers
 		// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Edit([Bind(Include = "ID_Vermietung,Von,Bis,Bezahlt,Rabatt,KundeId")] Vermietung vermietung)
+		public ActionResult Edit(Vermietung vermietung)
 		{
 			if (ModelState.IsValid)
 			{
+				foreach (var artikelId in vermietung.Artikel)
+				{
+					var existing = vermietung.ArtikelVermietung.FirstOrDefault(x => x.ArtikelId == artikelId);
+					if (existing != null)
+					{
+						_unitOfWork.ArtikelVermietung.Delete(existing);
+						vermietung.ArtikelVermietung.Remove(existing);
+					}
+					else
+					{
+						var newItem = new ArtikelVermietung { ArtikelId = artikelId, VermietungsId = vermietung.ID_Vermietung };
+						_unitOfWork.ArtikelVermietung.Insert(newItem);
+						vermietung.ArtikelVermietung.Add(newItem);
+					}
+				}
+
 				_unitOfWork.Vermietung.Update(vermietung);
 				_unitOfWork.SaveChanges();
 				return RedirectToAction("Index");
