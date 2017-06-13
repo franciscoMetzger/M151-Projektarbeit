@@ -58,17 +58,14 @@ namespace Skivermietung.Controllers
 		}
 
 		// POST: Vermietung/Create
-		// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Create([Bind(Include = "ID_Vermietung,Von,Bis,Bezahlt,Rabatt,KundeId")] Vermietung vermietung)
+		public ActionResult Create(Vermietung vermietung)
 		{
 			if (ModelState.IsValid)
 			{
 				foreach (var artikelId in vermietung.Artikel)
 				{
-					vermietung.ArtikelVermietung.Add(new ArtikelVermietung { ArtikelId = artikelId, VermietungsId = vermietung.ID_Vermietung });
+					vermietung.AddArtikel(artikelId);
 				}
 
 				_unitOfWork.Vermietung.Insert(vermietung);
@@ -94,12 +91,11 @@ namespace Skivermietung.Controllers
 			}
 			ViewBag.KundeId = new SelectList(_kundenSelection, "ID_Kunde", "Vorname", vermietung.KundeId);
 			ViewBag.Artikel = _unitOfWork.Artikel.LoadAll().ToList();
+
 			return View(vermietung);
 		}
 
 		// POST: Vermietung/Edit/5
-		// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		public ActionResult Edit(Vermietung vermietung)
 		{
@@ -152,6 +148,22 @@ namespace Skivermietung.Controllers
 			Vermietung vermietung = _unitOfWork.Vermietung.Load(id);
 			_unitOfWork.Vermietung.Delete(vermietung);
 			_unitOfWork.SaveChanges();
+			return RedirectToAction("Index");
+		}
+
+		public ActionResult Bezahlt(int? id)
+		{
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+
+			var vermietung = _unitOfWork.Vermietung.Load(id.Value);
+			vermietung.Bezahlt = DateTime.Now;
+
+			_unitOfWork.Vermietung.Update(vermietung);
+			_unitOfWork.SaveChanges();
+
 			return RedirectToAction("Index");
 		}
 

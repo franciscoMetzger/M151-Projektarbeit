@@ -44,11 +44,11 @@
 		</dd>
 
 		<dt>
-			@Html.DisplayNameFor(model => model.Kunde.Vorname)
+			<label>Kunde</label>
 		</dt>
 
 		<dd>
-			@Html.DisplayFor(model => model.Kunde.Vorname)
+			@Html.DisplayFor(model => model.Kunde.NameKomplett)
 		</dd>
 
 		<dt>
@@ -65,8 +65,14 @@
 			</ul>
 		</dd>
 	</dl>
+
+	<div class="col-md-offset-4 col-md-10">
+		
+	</div>
 </div>
+
 <p>
 	@Html.ActionLink("Anpassen", "Edit", new { id = Model.ID_Vermietung }) |
-	@Html.ActionLink("Zurück", "Index")
+	@Html.ActionLink("Zurück", "Index")      |         
+	@Html.ActionLink("Geld erhalten", "Bezahlt", new { id = Model.ID_Vermietung })
 </p>

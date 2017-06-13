@@ -22,6 +22,7 @@ namespace Skivermietung.Models.Metadata
 		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy}")]
 		public DateTime? Bezahlt { get; set; }
 
+		[Display(Name = "Rabatt in %")]
 		public int? Rabatt { get; set; }
 
 		[Required]
