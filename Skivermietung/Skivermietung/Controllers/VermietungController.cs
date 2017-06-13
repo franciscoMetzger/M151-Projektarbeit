@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using Skivermietung.Business.Domain;
 using Skivermietung.Business.Domain.Repositories.Interfaces;
 using Skivermietung.Models;
+using WebGrease.Css.Extensions;
 
 namespace Skivermietung.Controllers
 {
@@ -160,7 +161,10 @@ namespace Skivermietung.Controllers
 		public ActionResult DeleteConfirmed(int id)
 		{
 			Vermietung vermietung = _unitOfWork.Vermietung.Load(id);
+
+			vermietung.ArtikelVermietung.ToList().ForEach(x => _unitOfWork.ArtikelVermietung.Delete(x));
 			_unitOfWork.Vermietung.Delete(vermietung);
+
 			_unitOfWork.SaveChanges();
 			return RedirectToAction("Index");
 		}
