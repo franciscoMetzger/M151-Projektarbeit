@@ -63,9 +63,12 @@ namespace Skivermietung.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				foreach (var artikelId in vermietung.Artikel)
+				if (vermietung.Artikel != null)
 				{
-					vermietung.AddArtikel(artikelId);
+					foreach (var artikelId in vermietung.Artikel)
+					{
+						vermietung.AddArtikel(artikelId);
+					}
 				}
 
 				_unitOfWork.Vermietung.Insert(vermietung);
@@ -101,20 +104,27 @@ namespace Skivermietung.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				foreach (var artikelId in vermietung.Artikel)
+				if (vermietung.Artikel != null)
 				{
-					var existing = vermietung.ArtikelVermietung.FirstOrDefault(x => x.ArtikelId == artikelId);
-					if (existing != null)
+					foreach (var artikelId in vermietung.Artikel)
 					{
-						_unitOfWork.ArtikelVermietung.Delete(existing);
-						vermietung.ArtikelVermietung.Remove(existing);
+						var existing = vermietung.ArtikelVermietung.FirstOrDefault(x => x.ArtikelId == artikelId);
+						if (existing != null)
+						{
+							_unitOfWork.ArtikelVermietung.Delete(existing);
+							vermietung.ArtikelVermietung.Remove(existing);
+						}
+						else
+						{
+							var newItem = new ArtikelVermietung { ArtikelId = artikelId, VermietungsId = vermietung.ID_Vermietung };
+							_unitOfWork.ArtikelVermietung.Insert(newItem);
+							vermietung.ArtikelVermietung.Add(newItem);
+						}
 					}
-					else
-					{
-						var newItem = new ArtikelVermietung { ArtikelId = artikelId, VermietungsId = vermietung.ID_Vermietung };
-						_unitOfWork.ArtikelVermietung.Insert(newItem);
-						vermietung.ArtikelVermietung.Add(newItem);
-					}
+				}
+				else
+				{
+					vermietung.ArtikelVermietung.Clear();
 				}
 
 				_unitOfWork.Vermietung.Update(vermietung);
