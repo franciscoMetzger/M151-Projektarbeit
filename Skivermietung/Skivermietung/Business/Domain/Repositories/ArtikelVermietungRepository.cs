@@ -1,4 +1,5 @@
-﻿using Skivermietung.Business.Domain.Repositories.Interfaces;
+﻿using System.Collections.Generic;
+using Skivermietung.Business.Domain.Repositories.Interfaces;
 using Skivermietung.Models;
 
 namespace Skivermietung.Business.Domain.Repositories
@@ -8,6 +9,11 @@ namespace Skivermietung.Business.Domain.Repositories
 		public ArtikelVermietungRepository(SkivermietungContext context)
 			: base(context)
 		{
+		}
+
+		public IEnumerable<ArtikelVermietung> LoadByVermietung(int idVermietung)
+		{
+			return Search(x => x.VermietungsId == idVermietung);
 		}
 	}
 }

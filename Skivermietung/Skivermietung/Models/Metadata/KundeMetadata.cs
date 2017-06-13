@@ -19,7 +19,7 @@ namespace Skivermietung.Models.Metadata
 		public string TelefonNr { get; set; }
 
 		[Required]
-		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy}")]
+		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
 		public DateTime Geburtstag { get; set; }
 	}
 }

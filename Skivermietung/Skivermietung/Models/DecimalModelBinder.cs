@@ -13,7 +13,7 @@ namespace Skivermietung.Models
 			object actualValue = null;
 			try
 			{
-				actualValue = Convert.ToDecimal(valueResult.AttemptedValue, CultureInfo.CurrentCulture);
+				actualValue = Convert.ToDecimal(valueResult.AttemptedValue.Replace('.', ','), CultureInfo.CurrentCulture);
 			}
 			catch (FormatException e)
 			{

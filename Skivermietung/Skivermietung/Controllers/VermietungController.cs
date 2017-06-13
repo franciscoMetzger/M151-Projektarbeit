@@ -106,15 +106,19 @@ namespace Skivermietung.Controllers
 			{
 				if (vermietung.Artikel != null)
 				{
+					var existingArtikelVermietungen = _unitOfWork.ArtikelVermietung.LoadByVermietung(vermietung.ID_Vermietung).ToList();
+
+					foreach (var artikelVermietung in existingArtikelVermietungen)
+					{
+						if (vermietung.Artikel.Contains(artikelVermietung.ArtikelId) == false)
+						{
+							_unitOfWork.ArtikelVermietung.Delete(artikelVermietung);
+						}
+					}
+
 					foreach (var artikelId in vermietung.Artikel)
 					{
-						var existing = vermietung.ArtikelVermietung.FirstOrDefault(x => x.ArtikelId == artikelId);
-						if (existing != null)
-						{
-							_unitOfWork.ArtikelVermietung.Delete(existing);
-							vermietung.ArtikelVermietung.Remove(existing);
-						}
-						else
+						if (existingArtikelVermietungen.Any(x => x.ArtikelId == artikelId) == false)
 						{
 							var newItem = new ArtikelVermietung { ArtikelId = artikelId, VermietungsId = vermietung.ID_Vermietung };
 							_unitOfWork.ArtikelVermietung.Insert(newItem);
